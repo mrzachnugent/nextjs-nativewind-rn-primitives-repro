@@ -1,101 +1,140 @@
-import Image from "next/image";
+import { Text } from "@/components/ui/text";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Avatar as HackAvatar,
+  AvatarFallback as HackAvatarFallback,
+  AvatarImage as HackAvatarImage,
+} from "@/components/hack-ui/avatar";
+import { NativeWindReactNativeExample } from "@/components/NativeWindReactNativeExample";
+import { Button } from "@/components/ui/button";
+import { Pressable } from "@/components/Pressable";
+import {
+  LocalAvatar,
+  LocalAvatarFallback,
+  LocalAvatarImage,
+} from "@/components/LocalAvatar";
+
+const GITHUB_AVATAR_URI =
+  "https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex flex-col gap-12 justify-center items-center py-24">
+      <WorkingSection />
+      <NotWorkingSection />
+      <HackSection />
+    </main>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+function WorkingSection() {
+  return (
+    <div className="max-w-5xl mx-auto">
+      <NativeWindReactNativeExample />
+      <p className="pt-12 font-medium">
+        These components are styled with tailwind classes:
+      </p>
+      <div className="grid grid-cols-3 gap-4 py-4 ">
+        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+          <button className="border p-2">HTML button</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+          <Pressable className="bg-muted p-2">
+            Pressable from React-Native
+          </Pressable>
+        </div>
+        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+          <Button>
+            <Text>RNR Button</Text>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NotWorkingSection() {
+  return (
+    <div className="max-w-5xl mx-auto w-full">
+      <div className="flex flex-col gap-4">
+        <Text className="text-3xl">What doesn&apos;t works?</Text>
+        <p className="text-base">
+          @rn-primtives which are made from React-Native components but they are
+          located in the `node_modules`
+        </p>
+        <Text className="text-sm italic text-center opacity-60">
+          Note: @rn-primitives from Shared are utilities that still work since
+          they do not accept class names.
+        </Text>
+      </div>
+      <p className="pt-12 font-medium">
+        These components are attempted to be styled with tailwind classes:
+      </p>
+      <div className="grid grid-cols-2 gap-4 py-4 ">
+        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+          <Avatar alt="Rick Sanchez's Avatar" className="w-24 h-24">
+            <AvatarImage />
+            <AvatarFallback>
+              <Text>RS</Text>
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+          <Avatar alt="Rick Sanchez's Avatar" className="w-24 h-24">
+            <AvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
+            <AvatarFallback>
+              <Text>RS</Text>
+            </AvatarFallback>
+          </Avatar>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HackSection() {
+  return (
+    <div className="max-w-5xl mx-auto w-full">
+      <div className="flex flex-col gap-4">
+        <Text className="text-3xl">Workarounds</Text>
+        <p className="text-base">
+          - Using the `$$css` field in the style prop to pass tailwind classes
+          to the components. See the `/components/hack-ui/avatar`
+        </p>
+        <p className="text-base">
+          - Using the manual installation for the @rn-primitives components. See
+          `/components/primitives/avatar` and `/components/LocalAvatar`
+        </p>
+        <Text className="text-sm italic text-center opacity-60">
+          Note: @rn-primitives from Shared are utilities that still work since
+          they do not accept class names. These are: `@rn-primitives/hooks`,
+          `@rn-primitives/hooks`, `@rn-primitives/portal`,
+          `@rn-primitives/slot`, `@rn-primitives/types`
+        </Text>
+      </div>
+      <p className="pt-12 font-medium">
+        These components are attempted to be styled with tailwind classes:
+      </p>
+      <div className="grid grid-cols-2 gap-4 py-4 ">
+        <div className="border border-dashed aspect-square rounded-lg flex flex-col items-center justify-center gap-2">
+          <HackAvatar alt="Rick Sanchez's Avatar">
+            <HackAvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
+            <HackAvatarFallback>
+              <Text>RS</Text>
+            </HackAvatarFallback>
+          </HackAvatar>
+          <p>HackAvatar</p>
+        </div>
+        <div className="border border-dashed aspect-square rounded-lg flex flex-col items-center justify-center gap-2">
+          <LocalAvatar alt="Rick Sanchez's Avatar">
+            <LocalAvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
+            <LocalAvatarFallback>
+              <Text>RS</Text>
+            </LocalAvatarFallback>
+          </LocalAvatar>
+          <p>LocalAvatar</p>
+        </div>
+      </div>
     </div>
   );
 }
