@@ -19,7 +19,7 @@ const GITHUB_AVATAR_URI =
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-12 justify-center items-center py-24">
+    <main className="flex flex-col gap-12 justify-center items-center py-24 px-4">
       <WorkingSection />
       <NotWorkingSection />
       <HackSection />
@@ -34,7 +34,7 @@ function WorkingSection() {
       <p className="pt-12 font-medium">
         These components are styled with tailwind classes:
       </p>
-      <div className="grid grid-cols-3 gap-4 py-4 ">
+      <div className="grid md:grid-cols-3 gap-4 py-4 ">
         <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
           <button className="border p-2">HTML button</button>
         </div>
@@ -70,8 +70,8 @@ function NotWorkingSection() {
       <p className="pt-12 font-medium">
         These components are attempted to be styled with tailwind classes:
       </p>
-      <div className="grid grid-cols-2 gap-4 py-4 ">
-        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+      <div className="grid md:grid-cols-2 gap-4 py-4 ">
+        <div className="border border-dashed border-destructive aspect-square rounded-lg grid place-items-center">
           <Avatar alt="Rick Sanchez's Avatar" className="w-24 h-24">
             <AvatarImage />
             <AvatarFallback>
@@ -79,7 +79,7 @@ function NotWorkingSection() {
             </AvatarFallback>
           </Avatar>
         </div>
-        <div className="border border-dashed aspect-square rounded-lg grid place-items-center">
+        <div className="border border-dashed border-destructive aspect-square rounded-lg grid place-items-center">
           <Avatar alt="Rick Sanchez's Avatar" className="w-24 h-24">
             <AvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
             <AvatarFallback>
@@ -115,8 +115,8 @@ function HackSection() {
       <p className="pt-12 font-medium">
         These components are attempted to be styled with tailwind classes:
       </p>
-      <div className="grid grid-cols-2 gap-4 py-4 ">
-        <div className="border border-dashed aspect-square rounded-lg flex flex-col items-center justify-center gap-2">
+      <div className="grid md:grid-cols-2 gap-4 py-4 ">
+        <div className="border border-dashed  aspect-square rounded-lg flex flex-col items-center justify-center gap-2">
           <HackAvatar alt="Rick Sanchez's Avatar">
             <HackAvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
             <HackAvatarFallback>
