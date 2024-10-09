@@ -8,10 +8,39 @@ const nextConfig = {
     "expo",
     "nativewind",
     "react-native-css-interop",
-    "@rn-primitives/slot",
-    "@rn-primitives/types",
+    "react-native-reanimated",
+    "@rn-primitives/accordion",
+    "@rn-primitives/alert-dialog",
+    "@rn-primitives/aspect-ratio",
     "@rn-primitives/avatar",
+    "@rn-primitives/checkbox",
+    "@rn-primitives/collapsible",
+    "@rn-primitives/context-menu",
+    "@rn-primitives/dialog",
+    "@rn-primitives/dropdown-menu",
+    "@rn-primitives/hover-card",
+    "@rn-primitives/label",
+    "@rn-primitives/menubar",
+    "@rn-primitives/navigation-menu",
+    "@rn-primitives/popover",
+    "@rn-primitives/portal",
+    "@rn-primitives/progress",
+    "@rn-primitives/radio-group",
+    "@rn-primitives/select",
+    "@rn-primitives/separator",
+    "@rn-primitives/slider",
+    "@rn-primitives/slot",
+    "@rn-primitives/switch",
+    "@rn-primitives/table",
+    "@rn-primitives/tabs",
+    "@rn-primitives/toast",
+    "@rn-primitives/toggle",
+    "@rn-primitives/toggle-group",
+    "@rn-primitives/toolbar",
+    "@rn-primitives/tooltip",
+    "@rn-primitives/types",
   ],
+
   experimental: {
     forceSwcTransforms: true,
   },
@@ -53,6 +82,13 @@ function withExpo(nextConfig) {
       if (!config.plugins) {
         config.plugins = [];
       }
+
+      // Expose __DEV__ from Metro.
+      config.plugins.push(
+        new options.webpack.DefinePlugin({
+          __DEV__: JSON.stringify(process.env.NODE_ENV !== "production"),
+        })
+      );
 
       // Execute the user-defined webpack config.
       if (typeof nextConfig.webpack === "function") {
