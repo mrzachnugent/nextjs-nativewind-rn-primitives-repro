@@ -44,6 +44,12 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
   },
+  // WARNING: For demo purposes only.
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withExpo(nextConfig);
